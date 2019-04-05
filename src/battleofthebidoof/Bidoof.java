@@ -1,7 +1,7 @@
 /*
    Matt Ludwig
-   2019-04-04
-   This is the class for the Pokemon Bidoof
+   2019-04-05
+   This class holds the Bidoof object, which contains radomly generated variables
  */
 package battleofthebidoof;
 /**
