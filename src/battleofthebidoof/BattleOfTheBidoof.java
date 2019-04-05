@@ -23,6 +23,25 @@ public class BattleOfTheBidoof {
         // Display the levels of the two bidoof
         // Ask the user for the prediction of the battle outcome
         // Simulate the battle using the move tackle
+        
+        JOptionPane.showMessageDialog(null, "Bidoof Simulator"+ "\n"+ "This program will simulate a pokemon battle between two"
+                + " Bidoof's" + "\n" + "Press OK to begin: ");
+        String nm1, nm2;
+        // User's Pokemon
+        nm1 = JOptionPane.showInputDialog("Instructions:" + "\n" + "Two Bidoof's with random levels, natures, and attributes will be "
+                + "generated." + "\n" + "Enter the name of your Bidoof: ");
+        if (nm1.isEmpty()) {
+            nm1 = "Bidoof1";
+        }
+        Bidoof bidoof1 = new Bidoof(nm1); // creates the first bidoof
+        
+        nm2 = JOptionPane.showInputDialog("Enter the name of the CPU's Bidoof: ");
+        if (nm2.isEmpty()) {
+            nm2 = "Bidoof2";
+        }
+        Bidoof bidoof2 = new Bidoof(nm2);
+                
+        
     }
     
 }

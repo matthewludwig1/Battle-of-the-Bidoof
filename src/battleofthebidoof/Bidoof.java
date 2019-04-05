@@ -11,6 +11,7 @@ package battleofthebidoof;
 public class Bidoof {
     // Stat Variables
     private int level, hP, attack, defense, speed;
+    private String pokName;
     
     // Constructors
     public Bidoof() { // default 
@@ -21,7 +22,7 @@ public class Bidoof {
         speed = 32;
     }
     
-    public Bidoof(int lev, int HP, int att, int def, int spd) {
+    public Bidoof(int lev, int HP, int att, int def, int spd, String pkNm) {
         lev = (int) (Math.random()* (100 - 50) + 50 );   // random attributes
         level = lev;
         HP = (int) (Math.random() * (322-119)) + 119;
@@ -32,6 +33,16 @@ public class Bidoof {
         defense = def;
         spd = (int) (Math.random() * (177 - 32)) + 32;
         speed = spd;
+        pokName = pkNm;
+    }
+    // alternate
+    public Bidoof(String pkNm) {
+        pokName = pkNm;
+        level = (int) (Math.random()* (100 - 50) + 50 );
+        hP = (int) (Math.random() * (322-119)) + 119;
+        attack = (int) (Math.random() * (207 - 45)) + 45;
+        defense = (int) (Math.random() * (196 - 40)) + 40;
+        speed = (int) (Math.random() * (177 - 32)) + 32;
     }
     
     public void setLevel(int lev) {
@@ -69,6 +80,11 @@ public class Bidoof {
         return speed;
     }
     
-    
+    public void setName(String pkNm) {
+        pokName = pkNm;
+    }
+    public String getName() {
+        return pokName;
+    }
     
 }
