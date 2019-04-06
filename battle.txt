@@ -1,1 +1,2 @@
-Previous Battles: 
+Previous Battles:
+//TO FIX: error with damage formula, and an error with the damage subtraction

@@ -1,6 +1,6 @@
 /*
    Matt Ludwig
-   2019-04-05
+   2019-04-06
    This class holds the Bidoof object, which contains radomly generated variables
  */
 package battleofthebidoof;
@@ -86,5 +86,6 @@ public class Bidoof {
     public String getName() {
         return pokName;
     }
+    
     
 }

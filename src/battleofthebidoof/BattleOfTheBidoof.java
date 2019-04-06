@@ -1,6 +1,6 @@
 /*
     Matt Ludwig
-    2019-04-05
+    2019-04-06
     Summative for Unit 3: Modular Programming
  */
 package battleofthebidoof;
@@ -16,16 +16,19 @@ public class BattleOfTheBidoof {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TO DO: Provide the user with an introduction to the simulator
-        // Next, ask the user for the name of the Bidoof
-        // Create two bidoof
-        // Display the levels of the two bidoof
-        // Ask the user for the prediction of the battle outcome
-        // Simulate the battle using the move tackle
-        // Display which pokemon moves first, next display the amount of health remaining
-        // Write each turn of the battle to battle.txt
-        
+    public static void main(String[] args) throws IOException{
+    
+       try {
+       BufferedReader readFile = new BufferedReader(new FileReader("battle.txt"));
+       System.out.println(readFile.readLine());
+       String line = "";
+           while((line = readFile.readLine()) != null){ //EOF
+           System.out.println(line);
+        }
+        readFile.close();
+        PrintWriter fileOut = new PrintWriter(new FileWriter( 
+                "battle.txt", true));
+        int damage;
         JOptionPane.showMessageDialog(null, "Bidoof Simulator"+ "\n"+ "This program will simulate a pokemon battle between two"
                 + " Bidoof's" + "\n" + "Press OK to begin: ");
         String nm1, nm2;
@@ -55,19 +58,62 @@ public class BattleOfTheBidoof {
              " to a battle!" + "\n" + "How many turns will the battle last?"));
         
         for (int i = 0; i < rounds; i++) {
+            int round = i +1;
+            fileOut.println();
+            fileOut.append("Round " + round + ":");
+            fileOut.println();
+            if (bidoof1.getHP() <=0) {
+                fileOut.append(bidoof1.getName() + " fainted. " + bidoof2.getName() + " is victorious");
+                break; // ends battle
+            }
+            if (bidoof2.getHP() <= 0) {
+                fileOut.append(bidoof2.getName() + " fainted. " + bidoof1.getName() + " is victorious");
+                break;
+            }
             if (bidoof1.getSpeed() >= bidoof2.getSpeed()) {
-                // insert the method for the move tackle, or bidoof1.tackle();
-                // print the round number to the file
-                // print the remaining hp for bidoof2
+                damage = (int)((((2*bidoof1.getLevel())/5)+ 2)* 50)*(((bidoof1.getAttack() / bidoof2.getDefense()))/50) + 2; // damage formula
+                bidoof2.setHitPoints(bidoof2.getHP() - (int)(damage * 1.5));
+                fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
+                fileOut.println();
+                fileOut.append(bidoof1.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof2.getName());
+                fileOut.println();
+                damage = (int)((((2*bidoof2.getLevel())/5)+ 2)* 50)*(((bidoof2.getAttack() / bidoof1.getDefense()))/50) + 2;  
+                bidoof1.setHitPoints(bidoof1.getHP() - (int)(damage * 1.5));
+                fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
+                fileOut.println();
+                fileOut.append(bidoof2.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof1.getName());
             }
             else if (bidoof2.getSpeed() > bidoof1.getSpeed()) {
-                 // insert the method for the move tackle, or bidoof2.tackle();
-                // print the round number to the file
-                // print the remaining hp for bidoof1
-            }
-        }
+                damage = (int)((((2*bidoof2.getLevel())/5)+ 2)* 50)*(((bidoof2.getAttack() / bidoof1.getDefense()))/50) + 2;
+                bidoof1.setHitPoints(bidoof1.getHP() - (int)(damage * 1.5));
+                fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
+                fileOut.println();
+                fileOut.append(bidoof2.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof1.getName());
+                fileOut.println();
+                damage = (int)((((2*bidoof1.getLevel())/5)+ 2)* 50)*(((bidoof1.getAttack() / bidoof2.getDefense()))/50) + 2; // damage formula
+                bidoof2.setHitPoints(bidoof2.getHP() - (int)(damage * 1.5));
+                fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
+                fileOut.println();
+                fileOut.append(bidoof1.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof2.getName());
                 
+            }
+          
+        }
         
+        fileOut.close(); //EOF
+    
+       }
+       catch (FileNotFoundException fileNotFound) {
+           System.out.println(fileNotFound);
+       }
+       catch (NumberFormatException nfe) {
+           System.out.println(nfe + " Please select an integer");
+       }
+       catch (NullPointerException npe) {
+           System.out.println(npe + " Program terminated");
+       }
+       
     }
     
+
 }
