@@ -1,1 +1,12 @@
 Previous Battles:
+Round 1:
+John has 125 HP. Steve has 258 HP 
+Steve uses tackle...  this deals 2 damage to John
+John has 125 HP. Steve has 255 HP 
+John uses tackle...  this deals 2 damage to Steve
+Round 2:
+John has 122 HP. Steve has 255 HP 
+Steve uses tackle...  this deals 2 damage to John
+John has 122 HP. Steve has 252 HP 
+John uses tackle...  this deals 2 damage to Steve
+John has 122 HP. Steve has 250 HP
