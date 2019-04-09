@@ -42,7 +42,7 @@ public class BattleOfTheBidoof {
         
         nm2 = JOptionPane.showInputDialog("Enter the name of the CPU's Bidoof: ");
         if (nm2.isEmpty()) {
-            nm2 = "Bidoof2";
+            nm2 = "Bidoof2";  // default name
         }
         Bidoof bidoof2 = new Bidoof(nm2); // creates the second bidoof
         
@@ -71,7 +71,8 @@ public class BattleOfTheBidoof {
                 fileOut.append(bidoof2.getName() + " fainted. " + bidoof1.getName() + " is victorious");
                 break;
             }
-            if (bidoof1.getSpeed() >= bidoof2.getSpeed()) {
+            if (bidoof1.getSpeed() >= bidoof2.getSpeed()) { // if the user's Pokemon is faster
+                
                 damage = (int)((((2*bidoof1.getLevel())/5)+ 2)* 50)*(((bidoof1.getAttack() / bidoof2.getDefense()))/50) + 2; // damage formula
                 bidoof2.setHitPoints(bidoof2.getHP() - (int)(damage * 1.5));
                 fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
@@ -84,7 +85,8 @@ public class BattleOfTheBidoof {
                 fileOut.println();
                 fileOut.append(bidoof2.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof1.getName());
             }
-            else if (bidoof2.getSpeed() > bidoof1.getSpeed()) {
+            else if (bidoof2.getSpeed() > bidoof1.getSpeed()) { // if the CPU's Pokemon is faster
+                
                 damage = (int)((((2*bidoof2.getLevel())/5)+ 2)* 50)*(((bidoof2.getAttack() / bidoof1.getDefense()))/50) + 2;
                 bidoof1.setHitPoints(bidoof1.getHP() - (int)(damage * 1.5));
                 fileOut.append(bidoof1.getName() + " has " + bidoof1.getHP() + " HP. " + bidoof2.getName() + " has " + bidoof2.getHP() + " HP ");
