@@ -1,6 +1,6 @@
 /*
     Matt Ludwig
-    2019-04-06
+    2019-04-09
     Summative for Unit 3: Modular Programming
  */
 package battleofthebidoof;
@@ -19,7 +19,7 @@ public class BattleOfTheBidoof {
     public static void main(String[] args) throws IOException{
     
        try {
-       BufferedReader readFile = new BufferedReader(new FileReader("battle.txt"));
+       BufferedReader readFile = new BufferedReader(new FileReader("battle.txt"));  // reads previous battle data
        System.out.println(readFile.readLine());
        String line = "";
            while((line = readFile.readLine()) != null){ //EOF
@@ -46,6 +46,7 @@ public class BattleOfTheBidoof {
         }
         Bidoof bidoof2 = new Bidoof(nm2); // creates the second bidoof
         
+        // displays pokemon data
         JOptionPane.showMessageDialog(null, "User's Pokemon:                    CPU's Pokemon: " + "\n" + "Name: " + bidoof1.getName()+ 
                 "                         Name: " + bidoof2.getName() + "\n" + "Species: " + "Bidoof                       Species: Bidoof" 
                 + "\n" + "Type: " + "Normal                            Type: Normal" + "\n" + "Level: " + bidoof1.getLevel() 
@@ -58,7 +59,7 @@ public class BattleOfTheBidoof {
              " to a battle!" + "\n" + "How many turns will the battle last?"));
         
         for (int i = 0; i < rounds; i++) {
-            int round = i +1;
+            int round = i + 1;
             fileOut.println();
             fileOut.append("Round " + round + ":");
             fileOut.println();
@@ -97,7 +98,6 @@ public class BattleOfTheBidoof {
                 fileOut.append(bidoof1.getName() + " uses tackle... " + " this deals " + damage + " damage to " + bidoof2.getName());
                 
             }
-          
         }
         
         fileOut.close(); //EOF
@@ -115,5 +115,4 @@ public class BattleOfTheBidoof {
        
     }
     
-
 }
