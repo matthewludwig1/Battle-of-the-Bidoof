@@ -1,7 +1,7 @@
 /*
     Matt Ludwig
     2019-04-09
-    Summative for Unit 3: Modular Programming
+    This program uses an external text file and the bidoof object to simulate a minature pokemon battle
  */
 package battleofthebidoof;
 
